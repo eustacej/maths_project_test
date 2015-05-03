@@ -33,7 +33,7 @@ View(GroupB_Final_Test)
 # Maths project dat import complete ###############################################################
 
 # box plots of CA1, CA2 and Final test results for both Groups
-par(mfrow=c(1,6)) # Set up a graph with 1 row and 3 columns
+par(mfrow=c(1,6)) # Set up a graph with 1 row and 6 columns
 boxplot(GroupA_CA1$CA1_Result,col="green",main ="CA1 Results",
         ylab ="Group A",
         ylim=c(0,100), las=1)
@@ -53,12 +53,36 @@ boxplot(GroupB_Final_Test$Final_Test,col="grey", main ="Final Test",
         ylab ="Group B",
         ylim=c(0,100), las=1)
 
+# using describe form the Hmisc package ##########################################################
+library(Hmisc) # loading packages
+
 describe(GroupA_CA1$CA1_Result)
 describe(GroupB_CA1$CA1_Result)
 describe(GroupA_CA2$CA2_Result)
 describe(GroupB_CA2$CA2_Result)
 describe(GroupA_Final_Test$Final_Test)
 describe(GroupB_Final_Test$Final_Test)
+
+
+summary(GroupA_CA1$CA1_Result)
+summary(GroupB_CA1$CA1_Result)
+summary(GroupA_CA2$CA2_Result)
+summary(GroupB_CA2$CA2_Result)
+summary(GroupA_Final_Test$Final_Test)
+summary(GroupB_Final_Test$Final_Test)
+
+#################################################################################################
+# margin of error ME
+# ME for GroupA_CA1
+ME_GroupA_CA1 = 1/sqrt(30)*100
+ME_GroupB_CA1 = 1/sqrt(34)*100
+
+#################################################################################################
+#run a t-test of both groups looking at the CA1 Results, two-sided, unpaired
+t.test(GroupA_CA1$CA1_Result,GroupB_CA1$CA1_Result,mu=0,alt="two.sided",conf=0.95,var.eq=F,paired=F)
+
+#run a t-test of both groups looking at the CA2 Results, two-sided, unpaired
+t.test(GroupA_CA2$CA2_Result,GroupB_CA2$CA2_Result,mu=0,alt="two.sided",conf=0.95,var.eq=F,paired=F)
 
 
 #run a t-test of both groups looking at the CA2 Results,Question by question, two-sided, unpaired
@@ -70,8 +94,12 @@ t.test(GroupA_CA2$CA2_Q5_8,GroupB_CA2$CA2_Q5_8,mu=0,alt="two.sided",conf=0.95,va
 
 # Test test on Final tests
 t.test(GroupA_Final_Test$Final_Test,GroupB_Final_Test$Final_Test,mu=0,alt="two.sided",conf=0.95,var.eq=F,paired=F)
-#box plot
-par(mfrow=c(1,6)) # Set up a graph with 1 row and 3 columns
+
+
+#box plot of the first three questions in CA2 for bothe groups
+# only Group A completed practice tests for logic
+
+par(mfrow=c(1,6)) # Set up a graph with 1 row and 6 columns
 boxplot(GroupA_CA2$CA2_Q1_12,col="green",main ="CA2 Q1 Results",
         ylab ="Group A",
         ylim=c(0,16), las=1)
@@ -91,19 +119,43 @@ boxplot(GroupB_CA2$CA2_Q3_16,col="yellow", main ="CA2 Q3 Results",
         ylab ="Group B",
         ylim=c(0,16), las=1)
 
+# look at question 1 CA2 both groups
+
 summary(GroupA_CA2$CA2_Q1_12)
 summary(GroupB_CA2$CA2_Q1_12)
 describe(GroupA_CA2$CA2_Q1_12)
 describe(GroupB_CA2$CA2_Q1_12)
-
 sd(GroupA_CA2$CA2_Q1_12)
 sd(GroupB_CA2$CA2_Q1_12)
-
 var(GroupA_CA2$CA2_Q1_12)
 var(GroupB_CA2$CA2_Q1_12)
 
+# look at question 2 CA2 both groups
 
-par(mfrow=c(1,4)) # Set up a graph with 1 row and 2 columns
+summary(GroupA_CA2$CA2_Q.2_16)
+summary(GroupB_CA2$CA2_Q.2_16)
+describe(GroupA_CA2$CA2_Q.2_16)
+describe(GroupB_CA2$CA2_Q.2_16)
+sd(GroupA_CA2$CA2_Q.2_16)
+sd(GroupB_CA2$CA2_Q.2_16)
+var(GroupA_CA2$CA2_Q.2_16)
+var(GroupB_CA2$CA2_Q.2_16)
+
+# look at question 3 CA2 both groups
+
+summary(GroupA_CA2$CA2_Q3_16)
+summary(GroupB_CA2$CA2_Q3_16)
+describe(GroupA_CA2$CA2_Q3_16)
+describe(GroupB_CA2$CA2_Q3_16)
+sd(GroupA_CA2$CA2_Q3_16)
+sd(GroupB_CA2$CA2_Q3_16)
+var(GroupA_CA2$CA2_Q3_16)
+var(GroupB_CA2$CA2_Q3_16)
+
+#box plot of the next three questions in CA2 for both groups
+
+
+par(mfrow=c(1,6)) # Set up a graph with 1 row and 6 columns
 boxplot(GroupA_CA2$CA2_Q5_8,col="green",main ="CA2 Q5 Results",
         ylab ="Group A",
         ylim=c(0,12), las=1)
@@ -116,82 +168,49 @@ boxplot(GroupA_CA2$CA2_Q6_8,col="green",main ="CA2 Q6 Results",
 boxplot(GroupB_CA2$CA2_Q6_8,col="yellow", main ="CA2 Q6 Results",
         ylab ="Group B",
         ylim=c(0,12), las=1)
-
-
-
-summary(GroupA_CA2$CA2_Q5_8)
-summary(GroupB_CA2$CA2_Q5_8)
-describe(GroupA_CA2$CA2_Q5_8)
-describe(GroupB_CA2$CA2_Q5_8)
-
-sd(GroupA_CA2$CA2_Q5_8)
-sd(GroupB_CA2$CA2_Q5_8)
-
-var(GroupA_CA2$CA2_Q5_8)
-var(GroupB_CA2$CA2_Q5_8)
-
-
-summary(GroupA_CA2$CA2_Q6_8)
-summary(GroupB_CA2$CA2_Q6_8)
-describe(GroupA_CA2$CA2_Q6_8)
-describe(GroupB_CA2$CA2_Q6_8)
-
-sd(GroupA_CA2$CA2_Q6_8)
-sd(GroupB_CA2$CA2_Q6_8)
-
-var(GroupA_CA2$CA2_Q6_8)
-var(GroupB_CA2$CA2_Q6_8)
-
-par(mfrow=c(1,4)) # Set up a graph with 1 row and 2 columns
-boxplot(GroupA_CA2$CA2_Q7_12,col="green",main ="CA2 Q7 Results",
+boxplot(GroupA_CA2$CA2_Q7_12,col="yellow", main ="CA2 Q7 Results",
         ylab ="Group A",
         ylim=c(0,12), las=1)
 boxplot(GroupB_CA2$CA2_Q7_12,col="yellow", main ="CA2 Q7 Results",
         ylab ="Group B",
         ylim=c(0,12), las=1)
+
+# look at question 5 CA2 both groups
+
+summary(GroupA_CA2$CA2_Q5_8)
+summary(GroupB_CA2$CA2_Q5_8)
+describe(GroupA_CA2$CA2_Q5_8)
+describe(GroupB_CA2$CA2_Q5_8)
+sd(GroupA_CA2$CA2_Q5_8)
+sd(GroupB_CA2$CA2_Q5_8)
+var(GroupA_CA2$CA2_Q5_8)
+var(GroupB_CA2$CA2_Q5_8)
+
+
+###########################################################################
+
+par(mfrow=c(1,2)) # Set up a graph with 1 row and 2 columns
+
 boxplot(GroupA_CA2$CA2_Q8_16,col="green",main ="CA2 Q8 Results",
         ylab ="Group A",
-        ylim=c(0,12), las=1)
+        ylim=c(0,16), las=1)
 boxplot(GroupB_CA2$CA2_Q8_16,col="yellow", main ="CA2 Q8 Results",
         ylab ="Group B",
-        ylim=c(0,12), las=1)
-
+        ylim=c(0,16), las=1)
 
 
 summary(GroupA_CA2$CA2_Q8_16)
 summary(GroupB_CA2$CA2_Q8_16)
 describe(GroupA_CA2$CA2_Q8_16)
 describe(GroupB_CA2$CA2_Q8_16)
+sd(GroupA_CA2$CA2_Q8_16)
+sd(GroupB_CA2$CA2_Q8_16)
+var(GroupA_CA2$CA2_Q8_16)
+var(GroupB_CA2$CA2_Q8_16)
 
+# Test test on CA2 Q8
+t.test(GroupA_CA2$CA2_Q8_16,GroupB_CA2$CA2_Q8_16,mu=0,alt="two.sided",conf=0.95,var.eq=F,paired=F)
 
-
-
-
-#run a t-test of both groups looking at the CA1 Results, two-sided, unpaired
-t.test(GroupA_CA1$CA1_Result,GroupB_CA1$CA1_Result,mu=0,alt="two.sided",conf=0.95,var.eq=F,paired=F)
-
-#run a t-test of both groups looking at the CA2 Results, two-sided, unpaired
-t.test(GroupA_CA2$CA2_Result,GroupB_CA2$CA2_Result,mu=0,alt="two.sided",conf=0.95,var.eq=F,paired=F)
-
-
-# box plots of final test results all groups
-par(mfrow=c(1,2)) # Set up a graph with 1 row and 3 columns
-boxplot(GroupA_Final_Test$Final_Test,col="green", main ="Group A (Practice Test)",
-        ylab ="Final Test",
-        ylim=c(0,100), las=1)
-boxplot(GroupB_Final_Test$Final_Test,col="grey", main ="Group B (No Practice Test)",
-        ylab ="",
-        ylim=c(0,100), las=1)
-
-
-# box plots of CA2 test results all groups
-par(mfrow=c(1,2)) # Set up a graph with 1 row and 2 columns
-boxplot(GroupA_CA2$CA2_Result,col="green", main ="Group A (Practice Test)",
-        ylab ="CA2 Results",
-        ylim=c(0,100), las=1)
-boxplot(GroupB_CA2$CA2_Result,col="grey", main ="Group B (No Practice Test)",
-        ylab ="",
-        ylim=c(0,100), las=1)
 
 hist(GroupA_CA2$CA2_Result,freq=TRUE)
 hist(GroupA_CA2$CA2_Result,prob=T,ylim=c(0,1),
@@ -204,25 +223,6 @@ lines(density(TP1),col="red",lwd=3)
 #run a t-test of both groups looking at the Final scores, two-sided, unpaired
 t.test(GroupA_Final_Test$Final_Test,GroupB_Final_Test$Final_Test,mu=0,alt="two.sided",conf=0.95,var.eq=F,paired=F)
 
-# look at item difficulty in CA1
-# there are 8 items in this test
-sum(GroupA_CA1$CA1_Q1_10)/300
-sum(GroupA_CA1$CA1_Q2_20)/600
-
-
-#run a t-test of group A and Group B CA2 results looking at the CA2 Q1 Results, two-sided, unpaired
-t.test(GroupA_CA2$CA2_Result,GroupB_CA2$CA2_Result,mu=0,alt="two.sided",conf=0.95,var.eq=F,paired=F)
-
-t.test(GroupA_CA2$CA2_Q1_12,GroupB_CA2$CA2_Q1_12,mu=0,alt="two.sided",conf=0.95,var.eq=F,paired=F)
-sd(GroupA_CA2$CA2_Result)
-sd(GroupB_CA2$CA2_Result)
-
-
-summary(GroupA_CA2$CA2_Result)
-describe(GroupA_CA2$CA2_Result)
-
-
-hist(Grade,ylab="Students",xlab="Score",las=1,main="Practice Test A1A")
 
 # Final test
 # group A
