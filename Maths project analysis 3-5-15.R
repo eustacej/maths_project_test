@@ -31,7 +31,55 @@ urlfile6<-'https://raw.githubusercontent.com/eustacej/maths_project_test/master/
 GroupB_Final_Test <-read.csv(urlfile6)
 View(GroupB_Final_Test)
 
-# Maths project dat import complete ###############################################################
+
+
+urlfile7<-'https://raw.githubusercontent.com/eustacej/maths_project_test/master/PT_A1A.csv'
+PT_A1A <-read.csv(urlfile7)
+View(PT_A1A)
+
+# Maths project data import complete ###############################################################
+
+# boxplots of CA1 TP1 and TP2.
+# Group A had practice tests for sets and operations
+# Group B had practice tests for Relations and Functions
+
+par(mfrow=c(1,4)) # Set up a graph with 1 row and 4 columns
+boxplot(GroupA_CA1$CA1_TP1,col="green",main ="Sets & Operations",
+        ylab ="Group A with Practice Tests",
+        ylim=c(0,55), las=1)
+boxplot(GroupB_CA1$CA1_TP1,col="grey", main ="Sets & Operations",
+        ylab ="Group B without Practice Tests",
+        ylim=c(0,55), las=1)
+boxplot(GroupA_CA1$CA1_TP2,col="green", main ="Relations & Functions",
+        ylab ="Group A without Practice Tests",
+        ylim=c(0,45), las=1)
+boxplot(GroupB_CA1$CA1_TP2,col="grey", main ="Relations & Functions",
+        ylab ="Group B with Practice Tests",
+        ylim=c(0,45), las=1)
+# Describe the Data from Tp1 and Tp2 CA1
+
+library("Hmisc", lib.loc="~/R/win-library/3.2") # loading packages
+
+describe(GroupA_CA1$CA1_TP1)
+describe(GroupB_CA1$CA1_TP1)
+describe(GroupA_CA1$CA1_TP2)
+describe(GroupB_CA1$CA1_TP2)
+summary(GroupA_CA1$CA1_TP1)
+summary(GroupB_CA1$CA1_TP1)
+summary(GroupA_CA1$CA1_TP2)
+summary(GroupB_CA1$CA1_TP2)
+
+PTA1A_Students <-c(21,5,3,3,1,1)
+PTA1A_Attempts <-c(1,2,3,4,5,6)
+# Barplot of attempts by students on PTA1A
+barplot (PTA1A_Students,width=1,space=FALSE,
+         main ="Practice Test A1A",ylab = "Students",
+         xlab="No. of Attempts", names.arg =(PTA1A_Attempts))
+
+
+
+
+
 
 # box plots of CA1, CA2 and Final test results for both Groups
 par(mfrow=c(1,6)) # Set up a graph with 1 row and 6 columns
@@ -47,6 +95,7 @@ boxplot(GroupA_CA2$CA2_Result,col="green", main ="CA2 Results",
 boxplot(GroupB_CA2$CA2_Result,col="grey", main ="CA2 Results",
         ylab ="Group B",
         ylim=c(0,100), las=1)
+# Final test was a paper based test with optional questions
 boxplot(GroupA_Final_Test$Final_Test,col="green", main ="Final Test",
         ylab ="Group A",
         ylim=c(0,100), las=1)
@@ -55,7 +104,7 @@ boxplot(GroupB_Final_Test$Final_Test,col="grey", main ="Final Test",
         ylim=c(0,100), las=1)
 
 # using describe form the Hmisc package ##########################################################
-library(Hmisc) # loading packages
+library("Hmisc", lib.loc="~/R/win-library/3.2") # loading packages
 
 describe(GroupA_CA1$CA1_Result)
 describe(GroupB_CA1$CA1_Result)
