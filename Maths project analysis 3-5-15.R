@@ -1,4 +1,5 @@
 # import csv files of result grades for all students from Git Hub
+getwd()
 
 # GroupA CA1 Results
 urlfile1<-'https://raw.githubusercontent.com/eustacej/maths_project_test/master/GroupA_CA1.csv'
