@@ -1,5 +1,5 @@
 # import csv files of result grades for all students from Git Hub
-getwd()
+# getwd()
 
 # GroupA CA1 Results
 urlfile1<-'https://raw.githubusercontent.com/eustacej/maths_project_test/master/GroupA_CA1.csv'
@@ -72,21 +72,67 @@ summary(GroupB_CA1$CA1_TP1)
 summary(GroupA_CA1$CA1_TP2)
 summary(GroupB_CA1$CA1_TP2)
 
+par(mfrow=c(1,4)) # Set up a graph with 1 row and 4 columns
+# Barplot of attempts by students on PTA1A
 PTA1A_Students <-c(21,5,3,3,1,1)
 PTA1A_Attempts <-c(1,2,3,4,5,6)
-# Barplot of attempts by students on PTA1A
 barplot (PTA1A_Students,width=1,space=FALSE,
-         main ="Practice Test A1A",ylab = "Students",
+         main ="Practice Test A1A",ylab = "Students",col="green",
          xlab="No. of Attempts", names.arg =(PTA1A_Attempts))
-
 
 PTA1B_Students <-c(18,2,0,1,0,0)
 PTA1B_Attempts <-c(1,2,3,4,5,6)
 # Barplot of attempts by students on PTA1A
-barplot (PTA1B_Students,width=1,space=FALSE,
+barplot (PTA1B_Students,width=1,space=FALSE,col="green",
          main ="Practice Test A1B",ylab = "Students",
          xlab="No. of Attempts", names.arg =(PTA1B_Attempts))
 
+# group B attempts on PT B2A
+PTB2A_Students <-c(22,8,1,1,0,0)
+PTB2A_Attempts <-c(1,2,3,4,5,6)
+# Barplot of attempts by students on PTB2A
+barplot (PTB2A_Students,width=1,space=FALSE,col="grey",
+         main ="Practice Test B2A",ylab = "Students",
+         xlab="No. of Attempts", names.arg =(PTB2A_Attempts))
+
+# group B attempts on PT B2B
+PTB2B_Students <-c(21,4,3,0,0,0)
+PTB2B_Attempts <-c(1,2,3,4,5,6)
+# Barplot of attempts by students on PTB2B
+barplot (PTB2B_Students,width=1,space=FALSE,col="grey",
+         main ="Practice Test B2B",ylab = "Students",
+         xlab="No. of Attempts", names.arg =(PTB2B_Attempts))
+
+# CA2 results boxplot
+
+# box plots of CA1, CA2 and Final test results for both Groups
+par(mfrow=c(1,4)) # Set up a graph with 1 row and 4 columns
+
+# group A attempts on PT A3A
+PTA3A_Students <-c(15,3,0,2,1,1)
+PTA3A_Attempts <-c(1,2,3,4,5,6)
+# Barplot of attempts by students on PTA3A
+barplot (PTA3A_Students,width=1,space=FALSE,col="green",
+         main ="Practice Test A3A",ylab = "Students",
+         xlab="No. of Attempts", names.arg =(PTA3A_Attempts))
+
+# group A attempts on PT A3B
+PTA3B_Students <-c(16,6,2,0,0,0)
+PTA3B_Attempts <-c(1,2,3,4,5,6)
+# Barplot of attempts by students on PTA3B
+barplot (PTA3B_Students,width=1,space=FALSE,col="green",
+         main ="Practice Test A3B",ylab = "Students",
+         xlab="No. of Attempts", names.arg =(PTA3B_Attempts))
+
+boxplot(GroupA_CA2$CA2_Result,col="green", main ="Group A",
+        ylab ="CA2 Result with Practice Tests",
+        ylim=c(0,100), las=1)
+boxplot(GroupB_CA2$CA2_Result,col="grey", main ="Group B",
+        ylab ="CA2 Result without Practice Tests",
+        ylim=c(0,100), las=1)
+
+#################################################################
+#################################################################
 
 
 # box plots of CA1, CA2 and Final test results for both Groups
@@ -128,6 +174,58 @@ summary(GroupA_CA2$CA2_Result)
 summary(GroupB_CA2$CA2_Result)
 summary(GroupA_Final_Test$Final_Test)
 summary(GroupB_Final_Test$Final_Test)
+
+
+
+################################################################################
+#survey Results
+par(mfrow=c(1,3)) # Set up a graph with 1 row and 6 columns
+# Q1 What is your gender?
+Q1_responses <-c(41,7)
+Q1_choices <-c("Male","Female")
+
+barplot (Q1_responses,width=1,space=TRUE,col="light blue",
+         main ="Gender",ylab = "Students",
+         xlab="", names.arg =(Q1_choices))
+
+Q2_responses <-c(4,32,7,4,0,1)
+Q2_choices <-c("<17","18-24","25-34","35-44","45-54",">55")
+
+barplot (Q2_responses,width=1,space=TRUE,col="light blue",
+         main ="Age",ylab = "Students",
+         xlab="", names.arg =(Q2_choices))
+
+Q3_responses <-c(22,26)
+Q3_choices <-c("A","B")
+
+barplot (Q3_responses,width=1,space=TRUE,col="light blue",
+         main ="Group",ylab = "Students",
+         xlab="", names.arg =(Q3_choices))
+#Response on practice testing
+Q4_responses <-c(2,3,7,19,6)
+Q4_choices <-c("Never","Rarely","sometimes","Regularly","Always")
+barplot (Q4_responses,width=1,space=TRUE,col="light blue",
+         main ="Practice Testing",ylab = "Students",
+         xlab="", names.arg =(Q4_choices))
+
+
+# How helpful did you find the online practice tests
+Q5_responses <-c(9,20,7,1,1)
+Q5_choices <-c("Extremely","Very","Somewhat","Slightly","Not at all")
+# Barplot of attempts by students on PTA3B
+barplot (Q5_responses,width=1,space=TRUE,col="light blue",
+         main ="How helpful did you find the online practice tests?",ylab = "Students",
+         xlab="", names.arg =(Q5_choices))
+
+# ranked 1 learning techniques
+Q8_responses <-c(12,5,4,3,3,3,2,2,1,0)
+Q8_choices <-c("Readreading","Practice Testing","Keyword","Highlighting","Elaboration","Self-Explaining",
+               "Summarisation","Imagery for Text","Interleaved Practice","Distributed Practice")
+barplot (Q8_responses,width=1,space=F,col="light blue",beside=FALSE,
+         main ="Ranked No 1 Learning Technique",ylab = "",horiz=TRUE,
+         xlab="No. Of Students", names.arg =(Q8_choices),las=1,cex.names=0.8,
+         par(mar=c(5.1, 13 ,4.1 ,2.1)))
+
 
 #################################################################################################
 # margin of error ME
