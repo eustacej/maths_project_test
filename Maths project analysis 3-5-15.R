@@ -31,12 +31,15 @@ urlfile6<-'https://raw.githubusercontent.com/eustacej/maths_project_test/master/
 GroupB_Final_Test <-read.csv(urlfile6)
 View(GroupB_Final_Test)
 
-
-
+# Practice Test A1A data
 urlfile7<-'https://raw.githubusercontent.com/eustacej/maths_project_test/master/PT_A1A.csv'
 PT_A1A <-read.csv(urlfile7)
 View(PT_A1A)
 
+# Practice test A1B data completed attempts only
+urlfile8 <- 'https://raw.githubusercontent.com/eustacej/maths_project_test/master/PT_A1B.csv'
+PT_A1B <-read.csv(urlfile8)
+View(PT_A1B)
 # Maths project data import complete ###############################################################
 
 # boxplots of CA1 TP1 and TP2.
@@ -77,7 +80,12 @@ barplot (PTA1A_Students,width=1,space=FALSE,
          xlab="No. of Attempts", names.arg =(PTA1A_Attempts))
 
 
-
+PTA1B_Students <-c(18,2,0,1,0,0)
+PTA1B_Attempts <-c(1,2,3,4,5,6)
+# Barplot of attempts by students on PTA1A
+barplot (PTA1B_Students,width=1,space=FALSE,
+         main ="Practice Test A1B",ylab = "Students",
+         xlab="No. of Attempts", names.arg =(PTA1B_Attempts))
 
 
 
